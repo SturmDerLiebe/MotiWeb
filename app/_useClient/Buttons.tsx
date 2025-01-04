@@ -5,7 +5,7 @@ import { PrimaryButton } from "@/components/buttons/Primary";
 export function GetStartedButton() {
     "use client";
     return (
-        <PrimaryButton className="w-1/4 self-center mt-6" onClick={() => {}}>
+        <PrimaryButton className="w-1/4 self-center" onClick={() => {}}>
             Get Startet
         </PrimaryButton>
     );
