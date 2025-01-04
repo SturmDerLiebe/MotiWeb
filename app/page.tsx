@@ -20,8 +20,8 @@ export default function Home() {
                         altText="A set of two hands. The right one holding a phone with the group-chat of the MotiMate-App running. The left hand swiping down to read new messages."
                     />
                     <ExplainerCard
-                        title="Create a fitness group"
-                        paragraph="Stay connected and motivated by creating  a group with your friends! Invite your workout buddies to join you on this fitness journey, and encourage each other to crush your goals"
+                        title="Own Workout goal"
+                        paragraph="Pick the number of weekly workouts that fits your schedule and goals."
                         source={StretchingPerson}
                         altText="A Person stretching down with their hands out straight."
                     />
