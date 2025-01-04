@@ -16,6 +16,9 @@ export default {
                 sans: ["var(--font-inter)"],
                 mono: ["var(--font-geist-mono)"],
             },
+            fontSize: {
+                "3xl": "1.75rem",
+            },
             backgroundImage: {
                 MotiMateLogo: "url('/illustrations/vectors/MotiMateLogo.svg')",
             },
