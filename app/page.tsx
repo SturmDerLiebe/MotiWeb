@@ -1,9 +1,9 @@
 import { ExplainerCard } from "@/components/cards/Explainer";
 import HandsUsingApp from "@/public/illustrations/bitmaps/HandsUsingApp.png";
+import JumpingRopePerson from "@/public/illustrations/vectors/JumpingRopePerson.svg";
 import StretchingPerson from "@/public/illustrations/vectors/StretchingPerson.svg";
 import TriumphCumPeople from "@/public/illustrations/vectors/TriumphCupPeople.svg";
-import JumpingRopePerson from "@/public/illustrations/vectors/JumpingRopePerson.svg";
-import { PrimaryButton } from "@/components/buttons/Primary";
+import { GetStartedButton } from "./_useClient/Buttons";
 
 export default function Home() {
     return (
@@ -35,9 +35,7 @@ Use it for a group gathering anytime!`}
                     altText="A person jumping rope"
                 />
             </section>
-            <PrimaryButton className="w-1/4 self-center mt-6">
-                Get Startet
-            </PrimaryButton>
+            <GetStartedButton />
         </main>
     );
 }
