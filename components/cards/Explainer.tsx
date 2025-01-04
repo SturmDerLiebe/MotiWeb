@@ -13,10 +13,12 @@ export function ExplainerCard({
     altText: string;
 }) {
     return (
-        <article className="flex-1 shadow-inner p-2 rounded-xl mt-1">
-            <Image src={source} alt={altText} />
-            <h2 className="text-3xl font-bold pt-8">{title}</h2>
-            <p className="text-base font-medium pt-2">{paragraph}</p>
+        <article className="flex-1 shadow rounded-xl border bg-white">
+            <Image className="w-full" src={source} alt={altText} />
+            <div className="px-2 pb-2">
+                <h2 className="text-3xl font-bold pt-8">{title}</h2>
+                <p className="text-base font-medium pt-2">{paragraph}</p>
+            </div>
         </article>
     );
 }
