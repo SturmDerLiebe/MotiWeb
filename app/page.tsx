@@ -4,10 +4,11 @@ import JumpingRopePerson from "@/public/illustrations/vectors/JumpingRopePerson.
 import StretchingPerson from "@/public/illustrations/vectors/StretchingPerson.svg";
 import TriumphCumPeople from "@/public/illustrations/vectors/TriumphCupPeople.svg";
 import { GetStartedButton } from "./_useClient/Buttons";
+import { FirstLevelMain } from "@/components/containers/main/FirstLevel";
 
 export default function Home() {
     return (
-        <main className="flex flex-col mx-4 mt-4 gap-4">
+        <FirstLevelMain>
             <section className="flex flex-col gap-4">
                 <h2 className="self-center rounded-3xl p-3 text-6xl font-extrabold text-center bg-white border-dotted border-4 border-grey-1">
                     What is MotiMate about?
@@ -41,6 +42,6 @@ Use it for a group gathering anytime!`}
                 </div>
             </section>
             <GetStartedButton />
-        </main>
+        </FirstLevelMain>
     );
 }
