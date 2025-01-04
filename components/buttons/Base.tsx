@@ -12,7 +12,7 @@ export function BaseButton({
 }>) {
     return (
         <button
-            className={`py-3 rounded-full font-semibold ring-offset-4 focus-visible:ring-8 hover:ring-8 active:ring-0 ${className}`}
+            className={`py-3 rounded-full text-lg font-semibold ring-offset-4 ring-offset-grey-1 focus-visible:ring-8 hover:ring-8 active:ring-0 ${className}`}
             onClick={onClick}
         >
             {children}
