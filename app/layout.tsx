@@ -27,8 +27,16 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body
-                className={`${inter.variable} ${geistMono.variable} antialiased font-sans`}
+                className={`${inter.variable} ${geistMono.variable} antialiased font-sans m-4`}
             >
+                <header>
+                    <section className="bg-MotiMateLogo  bg-no-repeat bg-center bg-contain p-1 py-10">
+                        <h1 className="text-9xl font-extrabold text-center bg-opacity-70 bg-white">
+                            MotiMate
+                        </h1>
+                    </section>
+                </header>
+
                 {children}
             </body>
         </html>
