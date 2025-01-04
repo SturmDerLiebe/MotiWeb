@@ -1,9 +1,8 @@
 "use client";
 
 import type { MouseEventHandler, PropsWithChildren } from "react";
-import { BaseButton } from "./Base";
 
-export function PrimaryButton({
+export function BaseButton({
     className = "",
     onClick,
     children,
@@ -12,11 +11,11 @@ export function PrimaryButton({
     className?: string;
 }>) {
     return (
-        <BaseButton
-            className={`bg-grey-7 text-white ring-blue-2 active:bg-blue-2 disabled:bg-grey-6 ${className}`}
+        <button
+            className={`py-3 rounded-full font-semibold ring-offset-4 focus-visible:ring-8 hover:ring-8 active:ring-0 ${className}`}
             onClick={onClick}
         >
             {children}
-        </BaseButton>
+        </button>
     );
 }
