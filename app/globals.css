@@ -19,3 +19,17 @@ body {
     background: var(--background);
     font-family: Arial, Helvetica, sans-serif;
 }
+
+@layer components {
+    .heading5 {
+        @apply text-3xl font-bold;
+    }
+
+    .paragraph4 {
+        @apply text-sm font-normal;
+    }
+
+    .paragraph9 {
+        @apply text-xs font-medium;
+    }
+}
