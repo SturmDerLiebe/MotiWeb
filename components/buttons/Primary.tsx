@@ -8,7 +8,7 @@ export function PrimaryButton({
     onClick,
     children,
 }: PropsWithChildren<{
-    onClick: MouseEventHandler<HTMLButtonElement>;
+    onClick?: MouseEventHandler<HTMLButtonElement>;
     className?: string;
 }>) {
     return (

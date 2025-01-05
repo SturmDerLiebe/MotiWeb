@@ -4,10 +4,10 @@ import type { MouseEventHandler, PropsWithChildren } from "react";
 
 export function BaseButton({
     className = "",
-    onClick,
+    onClick = () => {},
     children,
 }: PropsWithChildren<{
-    onClick: MouseEventHandler<HTMLButtonElement>;
+    onClick?: MouseEventHandler<HTMLButtonElement>;
     className?: string;
 }>) {
     return (
