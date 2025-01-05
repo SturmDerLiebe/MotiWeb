@@ -1,6 +1,7 @@
 // import type { Metadata } from "next";
 import { Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
+import Link from "next/link";
 
 const inter = Inter({
     subsets: ["latin"],
@@ -32,7 +33,7 @@ export default function RootLayout({
                 <header>
                     <section className="bg-MotiMateLogo  bg-no-repeat bg-center bg-contain py-10">
                         <h1 className="text-9xl font-extrabold text-center bg-opacity-70 bg-white">
-                            MotiMate
+                            <Link href={"/"}>MotiMate</Link>
                         </h1>
                     </section>
                 </header>
