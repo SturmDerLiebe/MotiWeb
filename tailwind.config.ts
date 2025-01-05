@@ -21,6 +21,7 @@ export default {
                     7: "#142132",
                 },
                 blue: { 2: "#1D3D5E" },
+                error: { 1: "#F6D5D6", 2: "#D12E34" },
             },
             fontFamily: {
                 sans: ["var(--font-inter)"],
