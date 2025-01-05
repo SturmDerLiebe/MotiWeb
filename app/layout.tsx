@@ -31,7 +31,7 @@ export default function RootLayout({
                 className={`${inter.variable} ${geistMono.variable} antialiased font-sans my-4`}
             >
                 <header>
-                    <section className="bg-MotiMateLogo  bg-no-repeat bg-center bg-contain py-10">
+                    <section className="bg-MotiMateLogo bg-no-repeat bg-center bg-contain py-10">
                         <h1 className="text-9xl font-extrabold text-center bg-opacity-70 bg-white">
                             <Link href={"/"}>MotiMate</Link>
                         </h1>
