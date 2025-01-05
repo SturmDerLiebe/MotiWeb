@@ -29,6 +29,8 @@ export default {
             },
             backgroundImage: {
                 MotiMateLogo: "url('/illustrations/vectors/MotiMateLogo.svg')",
+                MotiMateLogoWithName:
+                    "url('/illustrations/vectors/MotiMateLogoWithName.svg')",
             },
         },
     },
