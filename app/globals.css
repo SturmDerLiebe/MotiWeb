@@ -26,10 +26,14 @@ body {
     }
 
     .paragraph4 {
+        @apply text-base font-normal;
+    }
+
+    .paragraph8 {
         @apply text-sm font-normal;
     }
 
     .paragraph9 {
-        @apply text-xs font-medium;
+        @apply text-sm font-medium;
     }
 }
