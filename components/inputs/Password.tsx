@@ -7,5 +7,13 @@ import type { PasswordInputComponentProps } from "./types";
 export function PasswordInputComponent(
     props: PasswordInputComponentProps,
 ): React.JSX.Element {
-    return <BaseInputComponent type="password" {...props} />;
+    return (
+        <BaseInputComponent
+            type="password"
+            onBlur={({ target: { value } }) => {
+                props.savePassword?.(value);
+            }}
+            {...props}
+        />
+    );
 }
