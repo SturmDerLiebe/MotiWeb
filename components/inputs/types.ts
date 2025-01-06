@@ -24,4 +24,5 @@ export type PasswordInputComponentProps = Omit<
 > & {
     minLength: number;
     assistiveText: string;
+    savePassword?: (newChosenPassword: string) => void;
 };
