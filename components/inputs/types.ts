@@ -1,9 +1,12 @@
 import type { InputHTMLAttributes } from "react";
+import { onBlurWithRef } from "../types/EventHandlerFunctions";
 
 export type BaseInputFieldProps = Pick<
     InputHTMLAttributes<HTMLInputElement>,
     "type" | "placeholder" | "pattern" | "required" | "id" | "minLength"
->;
+> & {
+    onBlur?: onBlurWithRef<HTMLInputElement>;
+};
 
 export type BaseInputComponentProps = Omit<BaseInputFieldProps, "id"> & {
     labelText: string;
