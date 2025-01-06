@@ -1,5 +1,8 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import type { BaseInputComponentProps, BaseInputFieldProps } from "./types";
+import Image from "next/image";
+import EyeOpen from "@/public/icons/EyeOpenFitting.svg";
+import EyeClosed from "@/public/icons/EyeHidden.svg";
 
 /**
  * Renders a base Input with a Label and an Assistive Text depending on the {@link type}
@@ -34,15 +37,39 @@ export function BaseInputComponent({
             {type === "email" ? (
                 <div className="flex-1" />
             ) : (
-                <p className="flex-1 paragraph8 text-grey-6 [:user-invalid+&]:text-error-2 before:content-['🛈'] [:user-invalid+&]:before:text-error-2 before:text-xl flex items-center gap-2">
+                <span className="flex-1 paragraph8 text-grey-6 [:user-invalid+&]:text-error-2 before:content-['🛈'] [:user-invalid+&]:before:text-error-2 before:text-xl flex items-center gap-2">
                     {assistiveText}
-                </p>
+                </span>
             )}
         </label>
     );
 }
 
-function BaseInputField({
+function BaseInputField(props: BaseInputFieldProps) {
+    const [passwordVisible, setPasswordVisible] = useState(false);
+
+    return (
+        <div className="flex-1 bg-white border rounded-lg shadow-sm flex items-center [&:has(:user-invalid)]:border-error-2 [&:has(:placeholder-shown)]:border-grey-4 [&:has(:focus)]:border-grey-5">
+            <BaseInputTag
+                {...props}
+                type={passwordVisible ? "text" : "password"}
+            />
+
+            {props.type !== "password" ? null : (
+                <EyeButton
+                    passwordVisible={passwordVisible}
+                    onClick={() => {
+                        setPasswordVisible((currentState) => {
+                            return !currentState;
+                        });
+                    }}
+                />
+            )}
+        </div>
+    );
+}
+
+function BaseInputTag({
     placeholder,
     type = "text",
     pattern,
@@ -54,20 +81,40 @@ function BaseInputField({
     const InputRef = useRef<HTMLInputElement | null>(null);
 
     return (
-        <div className="flex-1 border rounded-lg shadow-sm flex [&:has(:user-invalid)]:border-error-2 [&:has(:placeholder-shown)]:border-grey-4 [&:has(:focus)]:border-grey-5">
-            <input
-                placeholder={placeholder}
-                type={type}
-                required={required}
-                pattern={pattern}
-                minLength={minLength}
-                className={`flex-1 rounded-lg paragraph4 py-3 px-4 text-grey-7 placeholder:text-grey-4 focus:outline-none`}
-                id={id}
-                ref={InputRef}
-                onBlur={(event) => {
-                    onBlur?.(event, InputRef);
-                }}
+        <input
+            placeholder={placeholder}
+            type={type}
+            required={required}
+            pattern={pattern}
+            minLength={minLength}
+            className={`flex-1 rounded-lg paragraph4 py-3 px-4 text-grey-7 placeholder:text-grey-4 focus:outline-none`}
+            id={id}
+            ref={InputRef}
+            onBlur={(event) => {
+                onBlur?.(event, InputRef);
+            }}
+        />
+    );
+}
+
+function EyeButton({
+    passwordVisible,
+    onClick,
+}: {
+    passwordVisible: boolean;
+    onClick: () => void;
+}) {
+    return (
+        <button
+            className="aspect-square h-12 flex justify-center items-center"
+            onClick={onClick}
+            aria-label={passwordVisible ? "Hide password" : "Show password"}
+        >
+            <Image
+                src={passwordVisible ? EyeOpen : EyeClosed}
+                alt=""
+                className="size-6"
             />
-        </div>
+        </button>
     );
 }
