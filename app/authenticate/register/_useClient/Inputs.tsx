@@ -66,7 +66,6 @@ function PasswordFields() {
                             ? ""
                             : "The Passwords do not match!",
                     );
-                    input?.reportValidity();
                 }}
             />
         </>
