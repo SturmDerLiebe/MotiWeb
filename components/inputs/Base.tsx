@@ -109,6 +109,7 @@ function EyeButton({
 }) {
     return (
         <button
+            type="button"
             className="aspect-square h-12 flex justify-center items-center"
             onClick={onClick}
             aria-label={passwordVisible ? "Hide password" : "Show password"}
