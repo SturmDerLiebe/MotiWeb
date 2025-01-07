@@ -18,11 +18,13 @@ export function BaseInputComponent({
     onBlur,
 }: BaseInputComponentProps): React.JSX.Element {
     return (
-        <label
-            htmlFor={labelText}
-            className={`paragraph9 text-grey-5 flex items-center gap-2`}
-        >
-            <span className="flex-1">{labelText}</span>
+        <div className="col-span-full grid grid-cols-subgrid">
+            <label
+                htmlFor={labelText}
+                className={`col-span-1 paragraph9 text-grey-5 items-center gap-2`}
+            >
+                {labelText}
+            </label>
 
             <BaseInputField
                 placeholder={placeholder}
@@ -34,14 +36,13 @@ export function BaseInputComponent({
                 onBlur={onBlur}
             />
 
-            {type === "email" ? (
-                <div className="flex-1" />
-            ) : (
-                <span className="flex-1 paragraph8 text-grey-6 [:user-invalid+&]:text-error-2 before:content-['🛈'] [:user-invalid+&]:before:text-error-2 before:text-xl flex items-center gap-2">
-                    {assistiveText}
-                </span>
-            )}
-        </label>
+            <span
+                data-show={assistiveText !== undefined ? "yes" : "no"}
+                className="col-span-1 paragraph8 text-grey-6 [:user-invalid+&]:text-error-2 data-[show=yes]:before:content-['🛈'] [:user-invalid+&]:before:text-error-2 before:text-xl flex items-center gap-2"
+            >
+                {assistiveText}
+            </span>
+        </div>
     );
 }
 
@@ -49,7 +50,7 @@ function BaseInputField(props: BaseInputFieldProps) {
     const [passwordVisible, setPasswordVisible] = useState(false);
 
     return (
-        <div className="flex-1 bg-white border rounded-lg shadow-sm flex items-center [&:has(:user-invalid)]:border-error-2 [&:has(:placeholder-shown)]:border-grey-4 [&:has(:focus)]:border-grey-5">
+        <div className="col-span-1 bg-white border rounded-lg shadow-sm flex items-center [&:has(:user-invalid)]:border-error-2 [&:has(:placeholder-shown)]:border-grey-4 [&:has(:focus)]:border-grey-5">
             <BaseInputTag
                 {...props}
                 type={passwordVisible ? "text" : "password"}

@@ -13,7 +13,7 @@ export function RegistrationForm() {
             onSubmit={(event) => {
                 event.preventDefault();
             }}
-            className="flex flex-col gap-6 self-center"
+            className="grid grid-cols-3 gap-6 self-center"
         >
             <BaseInputComponent
                 labelText="Username (Nickname)"
@@ -29,7 +29,9 @@ export function RegistrationForm() {
 
             <PasswordFields />
 
-            <PrimaryButton>Create Account</PrimaryButton>
+            <PrimaryButton className="col-span-full">
+                Create Account
+            </PrimaryButton>
         </form>
     );
 }
