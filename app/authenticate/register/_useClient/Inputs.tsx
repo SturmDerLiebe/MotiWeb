@@ -64,10 +64,12 @@ function PasswordFields() {
                     { current: input },
                 ) => {
                     input?.setCustomValidity(
-                        repeatedPassword === chosenPassword
+                        chosenPassword.length < 8 ||
+                            repeatedPassword === chosenPassword
                             ? ""
                             : "The Passwords do not match!",
                     );
+                    input?.reportValidity();
                 }}
             />
         </>
