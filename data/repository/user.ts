@@ -1,5 +1,5 @@
+import { RegistrationDetails } from "../dto/registrationDetails";
 import { BaseRepository, BaseRepositoryConstructorArgs } from "./base";
-import type { RegistrationDetails } from "../dto/registrationDetails";
 
 export class UserRepository extends BaseRepository {
     constructor(baseArgs: BaseRepositoryConstructorArgs) {
@@ -57,6 +57,8 @@ export class UserRepository extends BaseRepository {
     }
 
     /**
+     *
+     *
      * @throws any `fetch()` related error
      * @throws any {@link sessionRepository} related Error
      */
