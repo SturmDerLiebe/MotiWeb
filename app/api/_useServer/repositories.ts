@@ -15,7 +15,7 @@ class UseServerSessionRepository implements SessionRepository {
 }
 
 export const UserRepositoryInstance = new UserRepository({
-    apiBaseUrl: BaseRepository.Api.mockaroo,
+    apiBaseUrl: UserRepository.Api.mockaroo,
     publicApiKey: process.env.NEXT_PUBLIC_MOCKAROO_KEY ?? "",
     sessionRepository: new UseServerSessionRepository(),
 });

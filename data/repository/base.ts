@@ -10,15 +10,15 @@ export type BaseRepositoryConstructorArgs = {
 };
 
 export abstract class BaseRepository {
-    static Api: { mockaroo: "https://my.api.mockaroo.com" };
+    static Api = { mockaroo: "https://my.api.mockaroo.com" };
 
-    static Routes: {
-        registration: "registration";
-        activation: "activation";
-        personalGoal: "personal-goal";
-        group: "group";
-        message: "group/message";
-        userInfo: "user-info";
+    static Routes = {
+        registration: "registration",
+        activation: "activation",
+        personalGoal: "personal-goal",
+        group: "group",
+        message: "group/message",
+        userInfo: "user-info",
     };
 
     constructor(
