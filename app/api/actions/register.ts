@@ -2,8 +2,9 @@
 
 import { RegistrationDetails } from "@/data/dto/registrationDetails";
 import { isStringRecord } from "@/utils/typeguards/record";
+import { cookies } from "next/headers";
 import { SimpleResponse } from "../_useServer/actionResponse/SimpleResponse";
-import { forwardSessionIdToClient } from "../_useServer/helper/cookies";
+import { buildSessionIdCookieFromApiResponse } from "../_useServer/helper/cookies";
 import { UserRepositoryInstance } from "../_useServer/repositorySingletons";
 
 export async function registerAction(
@@ -16,7 +17,7 @@ export async function registerAction(
             RegistrationDetails.buildFromObject(FORM_DATA_RECORD),
         );
 
-        forwardSessionIdToClient(RESPONSE);
+        (await cookies()).set(buildSessionIdCookieFromApiResponse(RESPONSE));
 
         return { ok: RESPONSE.ok, statusCode: RESPONSE.status };
     } else return { ok: false, statusCode: 400 };
