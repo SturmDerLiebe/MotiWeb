@@ -1,4 +1,4 @@
-import { RegistrationDetails } from "@/data/dto/registrationDetails";
+import { RegistrationDetails } from "@/data/dto/RegistrationDetails";
 import { BaseInputComponent } from "./Base";
 import type { EmailInputComponentProps } from "./types";
 

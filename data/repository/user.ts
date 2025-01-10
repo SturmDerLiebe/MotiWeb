@@ -1,4 +1,4 @@
-import { RegistrationDetails } from "../dto/registrationDetails";
+import { RegistrationDetails } from "../dto/RegistrationDetails";
 import { BaseRepository, BaseRepositoryConstructorArgs } from "./base";
 
 export class UserRepository extends BaseRepository {

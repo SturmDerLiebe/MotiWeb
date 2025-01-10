@@ -1,6 +1,6 @@
 "use server";
 
-import { RegistrationDetails } from "@/data/dto/registrationDetails";
+import { RegistrationDetails } from "@/data/dto/RegistrationDetails";
 import { isStringRecord } from "@/utils/typeguards/record";
 import { cookies } from "next/headers";
 import { SimpleResponse } from "../_useServer/actionResponse/SimpleResponse";
