@@ -15,7 +15,8 @@ export function BaseInputComponent({
     pattern,
     minLength,
     required,
-    onBlur,
+    onChangeWithRef,
+    onBlurWithRef,
 }: BaseInputComponentProps): React.JSX.Element {
     return (
         <div className="col-span-full grid grid-cols-subgrid">
@@ -33,7 +34,8 @@ export function BaseInputComponent({
                 pattern={pattern}
                 minLength={minLength}
                 id={labelText}
-                onBlur={onBlur}
+                onChangeWithRef={onChangeWithRef}
+                onBlurWithRef={onBlurWithRef}
             />
 
             <span
@@ -79,7 +81,8 @@ function BaseInputTag({
     minLength,
     required = true,
     id,
-    onBlur,
+    onChangeWithRef,
+    onBlurWithRef,
 }: BaseInputFieldProps) {
     const InputRef = useRef<HTMLInputElement | null>(null);
 
@@ -94,7 +97,10 @@ function BaseInputTag({
             id={id}
             ref={InputRef}
             onBlur={(event) => {
-                onBlur?.(event, InputRef);
+                onBlurWithRef?.(event, InputRef);
+            }}
+            onChange={(event) => {
+                onChangeWithRef?.(event, InputRef);
             }}
         />
     );

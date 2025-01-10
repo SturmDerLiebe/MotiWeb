@@ -10,10 +10,16 @@ export function PasswordInputComponent(
     return (
         <BaseInputComponent
             type="password"
-            onBlur={({ target: { value } }) => {
-                props.savePassword?.(value);
-            }}
             {...props}
+            onBlurWithRef={({ target: { value: password } }) => {
+                props.savePassword?.(password);
+            }}
+            onChangeWithRef={(
+                { target: { value: repeatedPassword } },
+                inputRef,
+            ) => {
+                props.validateInput?.(repeatedPassword, inputRef);
+            }}
         />
     );
 }
