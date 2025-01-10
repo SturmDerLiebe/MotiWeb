@@ -1,11 +1,12 @@
-import type { InputHTMLAttributes } from "react";
-import { onBlurWithRef } from "../types/EventHandlerFunctions";
+import type { InputHTMLAttributes, RefObject } from "react";
+import { OnBlurWithRef, OnChangeWithRef } from "../types/EventHandlerFunctions";
 
 export type BaseInputFieldProps = Pick<
     InputHTMLAttributes<HTMLInputElement>,
     "type" | "placeholder" | "pattern" | "required" | "id" | "minLength"
 > & {
-    onBlur?: onBlurWithRef<HTMLInputElement>;
+    onBlurWithRef?: OnBlurWithRef<HTMLInputElement>;
+    onChangeWithRef?: OnChangeWithRef<HTMLInputElement>;
 };
 
 export type BaseInputComponentProps = Omit<BaseInputFieldProps, "id"> & {
@@ -25,4 +26,8 @@ export type PasswordInputComponentProps = Omit<
     minLength: number;
     assistiveText: string;
     savePassword?: (newChosenPassword: string) => void;
+    validateInput?: (
+        repeatedPassword: string,
+        refObject: RefObject<HTMLInputElement | null>,
+    ) => void;
 };
