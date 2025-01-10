@@ -6,7 +6,7 @@ type ApiBaseUrlType =
 export type BaseRepositoryConstructorArgs = {
     apiBaseUrl: ApiBaseUrlType;
     publicApiKey: string;
-    sessionRepository?: SessionRepository;
+    sessionRepository: SessionRepository;
 };
 
 export abstract class BaseRepository {
@@ -24,22 +24,19 @@ export abstract class BaseRepository {
     constructor(
         private apiBaseUrl: ApiBaseUrlType,
         private publicApiKey: string,
-        public sessionRepository?: SessionRepository,
+        public sessionRepository: SessionRepository,
     ) {}
 
-    async buildBaseHeaders() {
+    private async buildBaseHeaders() {
         const HEADERS = new Headers();
-        HEADERS.append(
-            "Cookie",
-            (await this.sessionRepository?.findSessionId()) ?? "",
-        );
+        HEADERS.append("Cookie", await this.sessionRepository?.readSessionId());
 
         HEADERS.append("X-API-Key", this.publicApiKey);
 
         return HEADERS;
     }
 
-    async bulildRequest({
+    protected async bulildRequest({
         route,
         method,
         queryParams = new URLSearchParams(),
@@ -70,9 +67,9 @@ export abstract class BaseRepository {
     /**
      * No-Op when {@link sessionRepository} is undefined
      */
-    async handleSessionId(response: Response) {
-        this.sessionRepository?.saveSessionId(
-            response.type.toString() /*TODO: Read SessionId from X-Session-Id Header*/,
+    protected async handleSessionId(response: Response) {
+        this.sessionRepository.saveSessionId(
+            response.headers.get("X-Session-Id") ?? "",
         );
     }
 }
