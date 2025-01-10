@@ -40,7 +40,7 @@ export function BaseInputComponent({
 
             <span
                 data-show={assistiveText !== undefined ? "yes" : "no"}
-                className="col-span-1 paragraph8 text-grey-6 [:user-invalid+&]:text-error-2 data-[show=yes]:before:content-['🛈'] [:user-invalid+&]:before:text-error-2 before:text-xl flex items-center gap-2"
+                className="col-span-1 paragraph8 text-grey-6 [:has(:user-invalid)+&]:text-error-2 data-[show=yes]:before:content-['🛈'] [:user-invalid+&]:before:text-error-2 before:text-xl flex items-center gap-2"
             >
                 {assistiveText}
             </span>
