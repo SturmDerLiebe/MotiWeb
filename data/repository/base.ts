@@ -1,3 +1,4 @@
+import { HeadersNames } from "@/constants/header/names";
 import { SessionRepository } from "../interface/sessionRepository";
 
 type ApiBaseUrlType =
@@ -29,7 +30,10 @@ export abstract class BaseRepository {
 
     private async buildBaseHeaders() {
         const HEADERS = new Headers();
-        HEADERS.append("Cookie", await this.sessionRepository?.readSessionId());
+        HEADERS.append(
+            HeadersNames.sessionId,
+            await this.sessionRepository?.readSessionId(),
+        );
 
         HEADERS.append("X-API-Key", this.publicApiKey);
 
