@@ -20,7 +20,7 @@ export class UserRepository extends BaseRepository {
             await this.bulildRequest({
                 route: BaseRepository.Routes.registration,
                 method: "POST",
-                queryParams: new URLSearchParams({ randomInt: body.username }),
+                queryParams: new URLSearchParams({ username: body.username }),
                 body: JSON.stringify(body),
             }),
         );
