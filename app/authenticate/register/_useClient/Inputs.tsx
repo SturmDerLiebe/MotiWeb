@@ -1,16 +1,16 @@
 "use client";
 
-import { register } from "@/app/api/actions/register";
+import { registerAction } from "@/app/api/actions/register";
 import { PrimaryButton } from "@/components/buttons/Primary";
 import { BaseInputComponent } from "@/components/inputs/Base";
 import { EmailInputComponent } from "@/components/inputs/Email";
 import { PasswordInputComponent } from "@/components/inputs/Password";
 import { UsernameRegex } from "@/constants/regex/validation";
+import { RegistrationDetails } from "@/data/dto/RegistrationDetails";
 import { useActionState, useState } from "react";
 
 export function RegistrationForm() {
-    //NOTE: state from useActionState is currently unused
-    const [, formAction, isLoading] = useActionState(register, null);
+    const [state, formAction, isLoading] = useActionState(registerAction, null);
 
     return (
         <form
@@ -18,6 +18,7 @@ export function RegistrationForm() {
             className="grid grid-cols-3 gap-6 self-center"
         >
             <BaseInputComponent
+                name={RegistrationDetails.formFieldNames.username}
                 labelText="Username (Nickname)"
                 assistiveText="e.g. Jane"
                 placeholder="How should we call you?"
@@ -32,7 +33,7 @@ export function RegistrationForm() {
             <PasswordFields />
 
             <PrimaryButton disabled={isLoading} className="col-span-full">
-                Create Account
+                {state === null || state.ok ? "Create Account" : "Try Again"}
             </PrimaryButton>
         </form>
     );
@@ -47,6 +48,7 @@ function PasswordFields() {
     return (
         <>
             <PasswordInputComponent
+                name={RegistrationDetails.formFieldNames.password}
                 labelText="Password"
                 assistiveText="Needs to be at least 8 characters long"
                 placeholder={PLACEHOLDER}
