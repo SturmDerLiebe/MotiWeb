@@ -3,7 +3,13 @@ import { OnBlurWithRef, OnChangeWithRef } from "../types/EventHandlerFunctions";
 
 export type BaseInputFieldProps = Pick<
     InputHTMLAttributes<HTMLInputElement>,
-    "type" | "placeholder" | "pattern" | "required" | "id" | "minLength"
+    | "type"
+    | "placeholder"
+    | "pattern"
+    | "required"
+    | "id"
+    | "minLength"
+    | "name"
 > & {
     onBlurWithRef?: OnBlurWithRef<HTMLInputElement>;
     onChangeWithRef?: OnChangeWithRef<HTMLInputElement>;

@@ -1,3 +1,4 @@
+import { RegistrationDetails } from "@/data/dto/registrationDetails";
 import { BaseInputComponent } from "./Base";
 import type { EmailInputComponentProps } from "./types";
 
@@ -7,5 +8,11 @@ import type { EmailInputComponentProps } from "./types";
 export function EmailInputComponent(
     props: EmailInputComponentProps,
 ): React.JSX.Element {
-    return <BaseInputComponent type={"email"} {...props} />;
+    return (
+        <BaseInputComponent
+            {...props}
+            type={"email"}
+            name={RegistrationDetails.formFieldNames.email}
+        />
+    );
 }

@@ -8,6 +8,7 @@ import EyeClosed from "@/public/icons/EyeHidden.svg";
  * Renders a base Input with a Label and an Assistive Text depending on the {@link type}
  */
 export function BaseInputComponent({
+    name,
     labelText,
     assistiveText,
     placeholder,
@@ -28,6 +29,7 @@ export function BaseInputComponent({
             </label>
 
             <BaseInputField
+                name={name}
                 placeholder={placeholder}
                 type={type}
                 required={required}
@@ -73,6 +75,7 @@ function BaseInputField(props: BaseInputFieldProps) {
 }
 
 function BaseInputTag({
+    name,
     placeholder,
     type = "text",
     pattern,
@@ -86,6 +89,7 @@ function BaseInputTag({
 
     return (
         <input
+            name={name}
             placeholder={placeholder}
             type={type}
             required={required}
