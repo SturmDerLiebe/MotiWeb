@@ -1,18 +1,20 @@
 "use client";
 
+import { register } from "@/app/api/actions/register";
 import { PrimaryButton } from "@/components/buttons/Primary";
 import { BaseInputComponent } from "@/components/inputs/Base";
 import { EmailInputComponent } from "@/components/inputs/Email";
 import { PasswordInputComponent } from "@/components/inputs/Password";
 import { UsernameRegex } from "@/constants/regex/validation";
-import { useState } from "react";
+import { useActionState, useState } from "react";
 
 export function RegistrationForm() {
+    //NOTE: state from useActionState is currently unused
+    const [, formAction, isLoading] = useActionState(register, null);
+
     return (
         <form
-            onSubmit={(event) => {
-                event.preventDefault();
-            }}
+            action={formAction}
             className="grid grid-cols-3 gap-6 self-center"
         >
             <BaseInputComponent
@@ -29,7 +31,7 @@ export function RegistrationForm() {
 
             <PasswordFields />
 
-            <PrimaryButton className="col-span-full">
+            <PrimaryButton disabled={isLoading} className="col-span-full">
                 Create Account
             </PrimaryButton>
         </form>
@@ -59,17 +61,17 @@ function PasswordFields() {
                 assistiveText="Test if you chose the Password you wanted"
                 placeholder={PLACEHOLDER}
                 minLength={MIN_LENGTH}
-                onBlur={(
-                    { target: { value: repeatedPassword } },
-                    { current: input },
+                validateInput={(
+                    repeatedPassword,
+                    { current: inputElement },
                 ) => {
-                    input?.setCustomValidity(
-                        chosenPassword.length < 8 ||
+                    if (chosenPassword.length >= 8) {
+                        inputElement?.setCustomValidity(
                             repeatedPassword === chosenPassword
-                            ? ""
-                            : "The Passwords do not match!",
-                    );
-                    input?.reportValidity();
+                                ? ""
+                                : "The Passwords do not match!",
+                        );
+                    }
                 }}
             />
         </>
