@@ -1,4 +1,5 @@
 import { SessionRepository } from "@/data/interface/sessionRepository";
+import type { RequestCookie } from "next/dist/compiled/@edge-runtime/cookies";
 
 export class UseServerSessionRepository implements SessionRepository {
     private sessionId = "";
@@ -11,6 +12,10 @@ export class UseServerSessionRepository implements SessionRepository {
 
     async saveSessionId(sessionId: string) {
         this.sessionId = sessionId;
+    }
+
+    async saveSessionIdFromCookie(sessionCookie: RequestCookie | undefined) {
+        this.saveSessionId(sessionCookie?.value ?? "");
     }
 
     async hasValidSessionId() {
