@@ -18,7 +18,9 @@ export function RegistrationForm() {
 
     useEffect(() => {
         if (state?.ok)
-            ROUTER.push(`/authenticate/verify?${encodeURIComponent(email)}`);
+            ROUTER.push(
+                `/authenticate/verify?email=${encodeURIComponent(email)}`,
+            );
     }, [email, state, ROUTER]);
 
     return (
