@@ -54,7 +54,7 @@ function BaseInputField(props: BaseInputFieldProps) {
     const [passwordVisible, setPasswordVisible] = useState(false);
 
     return (
-        <div className="col-span-1 bg-white border rounded-lg shadow-sm flex items-center [&:has(:user-invalid)]:border-error-2 [&:has(:placeholder-shown)]:border-grey-4 [&:has(:focus)]:border-grey-5">
+        <div className="col-span-1 bg-white border rounded-lg shadow-sm flex items-center [&:has(:user-invalid)]:border-error-2 [&:has(:placeholder-shown)]:border-grey-4 [&:has(:focus)]:border-grey-5 ring-grey-5_50P [&:has(:focus-visible)]:ring-8">
             <BaseInputTag
                 {...props}
                 type={passwordVisible ? "text" : props.type}
