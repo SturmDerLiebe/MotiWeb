@@ -20,10 +20,10 @@ export function BaseInputComponent({
     onBlurWithRef,
 }: BaseInputComponentProps): React.JSX.Element {
     return (
-        <div className="col-span-full grid grid-cols-subgrid">
+        <div className="col-span-full grid grid-cols-subgrid items-center">
             <label
                 htmlFor={labelText}
-                className={`col-span-1 paragraph9 text-grey-5 items-center gap-2`}
+                className={`col-span-1 paragraph9 text-grey-5`}
             >
                 {labelText}
             </label>
