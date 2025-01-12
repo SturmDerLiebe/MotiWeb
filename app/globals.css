@@ -29,6 +29,10 @@ body {
         @apply text-lg font-normal;
     }
 
+    .paragraph5 {
+        @apply text-base font-normal;
+    }
+
     .paragraph6 {
         @apply text-base font-medium;
     }
