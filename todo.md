@@ -23,6 +23,8 @@
     );
     ```
 
+    - read session id from session repository
+
     - extend session id cookies max age by 1 week in middleware
 
     - Make InputComponent a wrapper that takes in the base input component
