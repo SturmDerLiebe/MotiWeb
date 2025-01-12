@@ -7,10 +7,19 @@ import { EmailInputComponent } from "@/components/inputs/Email";
 import { PasswordInputComponent } from "@/components/inputs/Password";
 import { UsernameRegex } from "@/constants/regex/validation";
 import { RegistrationDetails } from "@/data/dto/RegistrationDetails";
-import { useActionState, useState } from "react";
+import { useRouter } from "next/navigation";
+import { useActionState, useEffect, useState } from "react";
 
 export function RegistrationForm() {
+    const [email, setEmail] = useState("");
+
     const [state, formAction, isLoading] = useActionState(registerAction, null);
+    const ROUTER = useRouter();
+
+    useEffect(() => {
+        if (state?.ok)
+            ROUTER.push(`/authenticate/verify?${encodeURIComponent(email)}`);
+    }, [email, state, ROUTER]);
 
     return (
         <form
@@ -28,6 +37,9 @@ export function RegistrationForm() {
             <EmailInputComponent
                 labelText="E-Mail"
                 placeholder="Enter your E-Mail"
+                onBlurWithRef={({ target: { value } }) => {
+                    setEmail(value);
+                }}
             />
 
             <PasswordFields />
