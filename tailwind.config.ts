@@ -23,6 +23,7 @@ export default {
                 },
                 blue: { 2: "#1D3D5E" },
                 error: { 1: "#F6D5D6", 2: "#D12E34" },
+                success: { 2: "#317D35" },
             },
             fontFamily: {
                 sans: ["var(--font-inter)"],
