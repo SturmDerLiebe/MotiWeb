@@ -35,12 +35,14 @@ export class UserRepository extends BaseRepository {
      * @throws any {@link sessionRepository} related Error
      */
     async verifyUser(verificationCode: string) {
-        return await this.bulildRequest({
-            route: BaseRepository.Routes.activation,
-            method: "POST",
-            queryParams: new URLSearchParams({ code: verificationCode }),
-            body: JSON.stringify(verificationCode),
-        });
+        return fetch(
+            await this.bulildRequest({
+                route: BaseRepository.Routes.activation,
+                method: "POST",
+                queryParams: new URLSearchParams({ code: verificationCode }),
+                body: JSON.stringify(verificationCode),
+            }),
+        );
     }
 
     /**
