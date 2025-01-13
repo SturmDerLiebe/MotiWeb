@@ -34,3 +34,33 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+# Cloud Architecture
+
+```mermaid
+architecture-beta
+    group api(cloud)[Main Backend API]
+
+    service stageApi(cloud)[Google Cloud Run] in api
+    service stageDb(database)[MongoDB Atlas] in api
+    service sessionStorage(database)[Redis Session Storage] in api
+    
+    group mock(cloud)[Mocked API]
+    service mockApi(cloud)[Mockaroo] in mock
+    
+    group next(cloud)[HTML API]
+    service nextApi(cloud)[Vercel] in next 
+
+    group client(internet)[Clients]
+    service app(server)[Native App] in client
+    service browser(server)[Website] in client
+
+    stageDb:B -- T:stageApi
+    sessionStorage:R -- L:stageApi
+    stageApi{group}:B --> L:nextApi{group}
+
+    mockApi{group}:B --> T:nextApi{group}
+    mockApi{group}:R --> L:app
+
+    nextApi{group}:R --> L:browser
+```
