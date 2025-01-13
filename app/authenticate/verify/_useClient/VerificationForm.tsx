@@ -2,7 +2,7 @@
 
 import { verifyAction } from "@/app/api/actions/verify";
 import { useSearchParams } from "next/navigation";
-import { useActionState, useEffect, useRef, useState } from "react";
+import { Suspense, useActionState, useEffect, useRef, useState } from "react";
 import { CodeInput } from "./CodeInput";
 
 export function VerificationForm() {
@@ -43,7 +43,9 @@ export function VerificationForm() {
             <h2 className="heading5 self-center">Verify Account</h2>
             <p className="text-center paragraph5 text-grey-6">
                 Code has been send to
-                <b className="text-grey-7">{` ${useSearchParams().get("email")}.`}</b>
+                <Suspense fallback="...Loading">
+                    <EmailText />
+                </Suspense>
                 <br />
                 Enter the code to verify your account.{" "}
             </p>
@@ -71,5 +73,11 @@ export function VerificationForm() {
                 {isCounting ? `Resend code in ${secondsLeft} seconds` : ""}
             </p>
         </form>
+    );
+}
+
+function EmailText() {
+    return (
+        <b className="text-grey-7">{` ${useSearchParams().get("email")}.`}</b>
     );
 }
